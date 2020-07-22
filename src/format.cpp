@@ -9,12 +9,11 @@ using std::to_string;
 #define SECS_IN_MIN 60
 #define PAD_CHAR '0'
 
-// TODO: Complete this helper function
+// Formats time
 // INPUT: Long int measuring seconds
 // OUTPUT: HH:MM:SS
 // REMOVE: [[maybe_unused]] once you define the function
 string Format::ElapsedTime(long seconds) { 
-    //std::cout << "hello\n";
     int num_hours = seconds / SECS_IN_HOUR;
     seconds = seconds - num_hours * SECS_IN_HOUR;
     int num_minutes = seconds / SECS_IN_MIN;

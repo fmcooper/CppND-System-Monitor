@@ -41,13 +41,10 @@ enum CPUStates {
   kGuest_,
   kGuestNice_
 };
-std::map<std::string, int> CpuUtilization();
-long Jiffies();
-long ActiveJiffies();
-long ActiveJiffies(int pid);
-long IdleJiffies();
-
-std::string RetrieveValue(std::string filename, std::string key);
+  
+std::map<std::string, long> CpuUtilization();
+std::map<std::string, long> CpuUtilization(int pid);
+std::string RetrieveValue(std::string filename, std::string key, int token);
 
 // Processes
 std::string Command(int pid);
