@@ -22,6 +22,7 @@ void Processor::cacheValues(map<string, long int> my_map) {
 }
 
 // Return the aggregate CPU utilization
+// Calculations from: https://stackoverflow.com/questions/23367857/accurate-calculation-of-cpu-usage-given-in-percentage-in-linux
 float Processor::Utilization() { 
     map<string, long int> my_map = LinuxParser::CpuUtilization();
     cacheIdle = cacheIdle + cacheIowait;

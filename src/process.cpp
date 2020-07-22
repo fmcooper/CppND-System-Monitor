@@ -18,6 +18,7 @@ using std::map;
 int Process::Pid() { return pid_; }
 
 // Return this process's CPU utilization
+// Calculations from: https://stackoverflow.com/questions/16726779/how-do-i-get-the-total-cpu-usage-of-an-application-from-proc-pid-stat/16736599#16736599
 void Process::CalcCpuUtilization() { 
   map<string, long int> my_map = LinuxParser::CpuUtilization(pid_);
   
