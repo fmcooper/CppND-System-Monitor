@@ -4,6 +4,8 @@
 #include <vector>
 #include <map>
 #include <unistd.h>
+#include <iomanip>
+#include <sstream>
 
 #include "linux_parser.h"
 
@@ -13,6 +15,7 @@
 #define CUTIME_TOKEN 16
 #define CSTIME_TOKEN 17
 #define STARTTIME_TOKEN 22
+#define KB_IN_MB 1024.0
 
 using std::stof;
 using std::stol;
@@ -169,9 +172,12 @@ string LinuxParser::Command(int pid) {
   return "-1";
 }
 
-// Read a nd return the memory used by a process
+// Read and return the memory used by a process
 string LinuxParser::Ram(int pid) { 
-  return RetrieveValue(kProcDirectory + to_string(pid) + kStatusFilename, "VmSize:", SECOND_TOKEN);  
+  string ram = RetrieveValue(kProcDirectory + to_string(pid) + kStatusFilename, "VmRSS:", SECOND_TOKEN); 
+  std::stringstream stream;
+  stream << std::fixed << std::setprecision(1) << (stof(ram) / KB_IN_MB);
+  return stream.str();
 }
 
 // Read and return the user ID associated with a process
